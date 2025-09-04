@@ -41,12 +41,12 @@ public class ForLoop {
 
         // After `spliterator.trySplit()`, spliterator will iterate over the rest, i.e., the second half: [501..1000]
 
-        // Display the first hallf (i.e., 1 up to 500)
+        // Display the first half (i.e., 1 up to 500)
         firstHalfIterator.forEachRemaining((int i) -> System.out.println(i));
 
         System.out.println("We are half way there! Hold on.");
 
-        // Display the second hallf (i.e., 501 up to 1_000)
+        // Display the second half (i.e., 501 up to 1_000)
         spliterator.forEachRemaining((int i) -> System.out.println(i));
     }
 
