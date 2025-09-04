@@ -2,33 +2,59 @@ package com.ericbouchut.io;
 
 import java.io.PrintStream;
 
+/**
+ * Draw an ASCII art diamond pattern using stars (*).
+ * It is composed of
+ * <ul>
+ *   <li>an upward-pointing top triangle (with <code>radius</code> lines)</li>
+ *   <li>a center row</li>
+ *   <li>a downward-pointing bottom triangle (with <code>radius</code> lines)</li>
+ * </ul>
+ *
+ * Example: <code>DiamondPattern(3).draw()</code> would display a 7-rows diamond, like so:
+ * 
+ * <pre><code>
+ *     *         \
+ *    ***        |==> top triangle (3 rows)
+ *   *****       /
+ *  *******        ==> center row (1 row)
+ *   *****       \
+ *    ***         |==> bottom triangle (3 rows)
+ *     *         /
+ * </code></pre>
+ */
 public class DiamondPattern {
 
     /**
-     *  Diamond radius.
+     *  The radius of the Diamond (center line excluded).
      *  The total number of rows is <code>2 * radius + 1</code>.
      */
-    private int radius;
+    private final int radius;
 
     /**
-     * Max number of stars in the center row of the diamond.
+     * Max number of stars in the center row
      */
-    private int maxStars;
+    private final int maxStars;
 
     /**
-     * Draw a diamond of a given radius.
-     * @param radius must be an even number
+     * @param radius the "radius" of the diamond (must be an even number)
      */
-    public void draw (int radius) {
+    public DiamondPattern(final int radius) {
         if (radius % 2 != 0) {
             throw new IllegalArgumentException("radius must be an even number: " + radius);
         }
 
-        // Max number of stars in the center row
-        maxStars = nthOddNumber(radius);
+        this.radius = Math.abs(radius);
+        this.maxStars = nthOddNumber(radius);
+    }
+
+    /**
+     * Draw a diamond of a given radius.
+     */
+    public void draw () {
         int n = 0;
 
-        // Draw the top triangle
+        // Draw the top triangle and the center row
         do {
             drawLine(n);
         } while (n++ < radius);
@@ -78,10 +104,9 @@ public class DiamondPattern {
     }
 
     public static void main(String[] args) {
-        DiamondPattern diamond = new DiamondPattern();
-
-        diamond.draw(2);
-        diamond.draw(4);
-        diamond.draw(6);
+        new DiamondPattern(0).draw();
+        new DiamondPattern(2).draw();
+        new DiamondPattern(4).draw();
+        new DiamondPattern(6).draw();
     }
 }
