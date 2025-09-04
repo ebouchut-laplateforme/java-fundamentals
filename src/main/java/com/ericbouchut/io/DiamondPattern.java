@@ -1,7 +1,5 @@
 package com.ericbouchut.io;
 
-import java.io.PrintStream;
-
 /**
  * Draw an ASCII art diamond pattern using stars (*).
  * It is composed of
@@ -12,7 +10,7 @@ import java.io.PrintStream;
  * </ul>
  *
  * Example: <code>DiamondPattern(3).draw()</code> would display a 7-rows diamond, like so:
- * 
+ *
  * <pre><code>
  *     *         \
  *    ***        |==> top triangle (3 rows)
