@@ -2,12 +2,21 @@ package com.ericbouchut.type.array;
 
 /**
  * Ex 49:
- * Sort an array using the <b>bubble sort</b> method.
+ * This helper class provides a {@link #sort(int[])} method to sort an array using the <b>bubble sort</b> method.
  * O(N<sup>2</sup>) (Quadratic complexity_).
  *
  * @see <a href="https://www.udemy.com/course/java-fundamentals-beginners/learn/lecture/46065461#overview">Java Fundamentals Course on Udemy</a>
  */
 public class ArrayBubbleSort {
+
+    /**
+     * Sort the passed-in integer array using the bubble sort method.
+     *
+     * @param array the integer array to sort
+     */
+    public static void sort(int[] array) {
+        new ArrayBubbleSort().bubbleSort(array);
+    }
 
     /**
      * Sort the passed in integer array using the bubble sort method.
