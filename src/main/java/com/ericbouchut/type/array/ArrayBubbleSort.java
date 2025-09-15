@@ -6,6 +6,7 @@ package com.ericbouchut.type.array;
  * O(N<sup>2</sup>) (Quadratic complexity_).
  *
  * @see <a href="https://www.udemy.com/course/java-fundamentals-beginners/learn/lecture/46065461#overview">Java Fundamentals Course on Udemy</a>
+ * TODO: Make bubbleSort(int[]) and display(int[] static then make the class final
  */
 public class ArrayBubbleSort {
 
@@ -19,29 +20,32 @@ public class ArrayBubbleSort {
     }
 
     /**
-     * Sort the passed in integer array using the bubble sort method.
+     * Sort the passed in integer array (in ascending order) using the bubble sort method.
      * This method modifies the passed in array.
      *
      * @param array an int array
      */
     public void bubbleSort(int[] array) {
         boolean isSorted = false;
-        int buffer;
+        int loopCount = 0;
 
         for (int i=0; i < array.length; i++) {
+            int unsortedLength = Math.min(array.length - i, array.length);
 
-            for (int j=0; j < array.length && j+1 < array.length; j++) {
+            for (int j=0; j < unsortedLength && j+1 < unsortedLength; j++) {
+                loopCount++;
                 isSorted = array[j] <= array[j+1];
 
                 if (!isSorted) {
                     // Swap the 2 consecutive array items to sort them in ascending order
-                    buffer     = array[j];
+                    int buffer = array[j];
                     array[j]   = array[j+1];
                     array[j+1] = buffer;
                 }
             }
         }
-        System.out.println(isSorted);
+        System.err.printf("isSorted  = %b\n", isSorted);
+        System.err.printf("loopCount = %d\n", loopCount);
     }
 
     /**
