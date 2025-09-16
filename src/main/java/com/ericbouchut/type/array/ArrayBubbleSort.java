@@ -26,26 +26,26 @@ public class ArrayBubbleSort {
      * @param array an int array
      */
     public void bubbleSort(int[] array) {
+        int     loopCount = 0;
         boolean isSorted = false;
-        int loopCount = 0;
 
-        for (int i=0; i < array.length; i++) {
-            int unsortedLength = Math.min(array.length - i, array.length);
+        for (int i=0; !isSorted && i < array.length; i++) {
 
-            for (int j=0; j < unsortedLength && j+1 < unsortedLength; j++) {
+            // array.length - 1:     Disregard the last item as it is already sorted
+            // array.length - 1 - i: Do not re-sort items that have already been sorted
+            for (int j=0; j <  array.length - 1 - i; j++) {
                 loopCount++;
                 isSorted = array[j] <= array[j+1];
 
                 if (!isSorted) {
                     // Swap the 2 consecutive array items to sort them in ascending order
-                    int buffer = array[j];
+                    int temp   = array[j];
                     array[j]   = array[j+1];
-                    array[j+1] = buffer;
+                    array[j+1] = temp;
                 }
             }
         }
-        System.err.printf("isSorted  = %b\n", isSorted);
-        System.err.printf("loopCount = %d\n", loopCount);
+        System.out.printf("loopCount = %d\n", loopCount);
     }
 
     /**
@@ -63,7 +63,7 @@ public class ArrayBubbleSort {
     public static void main(String[] args) {
         ArrayBubbleSort ex49 = new ArrayBubbleSort();
 
-        // Build an integer array filled with random values [1..10]
+        // Build an integer array filled with 10 random values [1..10]
         int[] numbers = RandomValuesArrayBuilder.build(10, 10);
         ex49.display(numbers);
 
