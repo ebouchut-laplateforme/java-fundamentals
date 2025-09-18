@@ -59,6 +59,8 @@ classDiagram
     classDef can_access fill:#76b192
 ```
 
+---
+
 ```mermaid
 ---
 title: private Access Modifier
@@ -91,6 +93,8 @@ classDiagram
     classDef cannot_access fill:#D74345
 ```
 
+---
+
 ```mermaid
 ---
 title: protected Access Modifier
@@ -122,6 +126,8 @@ classDiagram
     classDef can_access    fill:#76B192
     classDef cannot_access fill:#D74345
 ```
+
+---
 
 ```mermaid
 ---
