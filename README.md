@@ -27,6 +27,10 @@ An **access modifier** defines the visibility of the class, field/attribute, or 
 | package-private | ✅          | ✅                         | ❌                        | ✅                            | ❌                           |
 
 Let's break down these access modifiers with visual class diagrams.
+The diagram use colors define who can access:
+
+- <span style="color: #76B192;">green</span>: can access
+- <span style="color: #D74345;">red</span>: **CANNOT** access
 
 ```mermaid
 ---
@@ -161,4 +165,4 @@ classDiagram
     classDef cannot_access fill:#D74345
 ```
 
-
+Source: [#55: Access levels](https://www.udemy.com/course/java-fundamentals-beginners/learn/lecture/46066801#overview)
