@@ -38,11 +38,12 @@ classDiagram
     namespace SamePackage {
         class Class:::can_access {
             +attribute String
+            +method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
         }
     }
-    note for Class "attribute has public access"
+    note for Class "attribute and method have **public** access"
     Class <|-- Subclass
     
     namespace OtherPackage {
@@ -68,11 +69,12 @@ classDiagram
     namespace SamePackage {
         class Class:::can_access {
             -attribute String
+            -method()  void
         }
         class Subclass["Subclass same package"]:::cannot_access {
         }
     }
-    note for Class "attribute has private access"
+    note for Class "attribute and method have **private** access"
     Class <|-- Subclass
     
     namespace OtherPackage {
@@ -99,11 +101,12 @@ classDiagram
     namespace SamePackage {
         class Class:::can_access {
             #attribute String
+            #method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
         }
     }
-    note for Class "attribute has protected access"
+    note for Class "attribute and method have **protected** access"
     Class <|-- Subclass
     
     namespace OtherPackage {
@@ -130,11 +133,12 @@ classDiagram
     namespace SamePackage {
         class Class:::can_access {
             ~attribute String
+            ~method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
         }
     }
-    note for Class "attribute has package-private access"
+    note for Class "attribute and method have **package-private** (default) access"
     Class <|-- Subclass
     
     namespace OtherPackage {
