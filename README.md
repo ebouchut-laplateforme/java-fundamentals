@@ -11,13 +11,14 @@ about [Java Fundamentals](https://www.udemy.com/course/java-fundamentals-beginne
 
 An **access modifier** defines the visibility of the class, field/attribute, or method it is applied to:
 
-- `private`: accessible only in the class in which it is defined.
-- `default`: also known as *package-private*, accessible only in the *package* it is defined in. To use package-private we do not specify the access modifier.
-- `protected`: accessible only in:
-    - the same *package*
-    - the same *class*
-    - the *subclasses*
 - `public`: accessible *everywhere* to *everyone*
+- `private`: only accessible in the class in which it is defined.
+- `protected`: only accessible in:
+    - the same *class*
+    - the **subclasses** (classes that inherit from this class) in the same package or not 
+    - classes in the **same** package
+- *package-private* (default): accessible only in the *package* it is defined in.  
+  To use package-private do **not** specify an access modifier.
 
 | Access Modifier | Same Class | Class in the same package | Class in another package | Subclass in the same package | Subclass in another package |
 | --------------- | ---------- | ------------------------- | ------------------------ | ---------------------------- | --------------------------- |
