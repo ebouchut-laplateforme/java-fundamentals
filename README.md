@@ -221,6 +221,111 @@ classDiagram
   Person <|-- Student
 ```
 
+### Interfaces
+
+#### Class Implementing Multiple Interfaces
+
+```java
+package com.ericbouchut.oop.inheritance;  
+  
+import java.util.Map;  
+  
+/**  
+ * This class implements several interfaces. 
+ */
+ class MyApplicationMultipleInterfaces implements Monitorable, Configurable, Runnable {  
+    private boolean isRunning;  
+  
+    public static void main(String[] args) {  
+        MyApplicationMultipleInterfaces app = new MyApplicationMultipleInterfaces();  
+  
+        System.out.println("isRuning(): " + app.isRunning());  
+        app.run();  
+        app.stop();  
+    }  
+  
+    @Override  
+    public boolean isRunning() {  
+        return isRunning;  
+    }  
+  
+    @Override  
+    public Map<String, Object> getMetrics() {  
+        return Map.of(  
+                "error", 42,  
+                "success", 567  
+        );  
+    }  
+  
+    @Override  
+    public void loadConfig() {  
+        System.out.println("Loading configuration.");  
+    }  
+  
+    @Override  
+    public void saveConfig() {  
+        System.out.println("Saving configuration.");  
+    }  
+  
+    @Override  
+    public void run() {  
+        System.out.println("Running...");  
+        try {  
+            start();  
+            monitor();  
+        } catch (Exception ex) {  
+            // Handle exception  
+        } finally {  
+            stop();  
+        }  
+    }  
+  
+    protected void monitor() {  
+        System.out.println("Monitoring...");  
+        System.out.println("App isRunning?: " + isRunning());  
+  
+        System.out.println("App Metrics:" );  
+        for (Map.Entry<String, ?> metricEntry: getMetrics().entrySet()) {  
+            System.out.print("\t- ");  
+            System.out.println(metricEntry);  
+        }  
+    }  
+  
+    protected void start() {  
+        System.out.println("Starting the App...");  
+  
+        if (!isRunning()) {  
+            loadConfig();  
+            isRunning = true;  
+        }  
+    }  
+  
+    protected void stop() {  
+        System.out.println("Stopping the App...");  
+  
+        if (isRunning()) {  
+            saveConfig();  
+            isRunning = false;  
+        }  
+    }  
+}
+```
+
+[Source](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/b460b3f024b7acaba7e846feea4130f27ea563d3/src/main/java/com/ericbouchut/oop/inheritance/MyApplicationMultipleInterfaces.java)
+
+The [MyApplication](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/b460b3f024b7acaba7e846feea4130f27ea563d3/src/main/java/com/ericbouchut/oop/inheritance/MyApplicationMultipleInterfaces.java) class implements several interfaces:
+
+- [Monitorable](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/b460b3f024b7acaba7e846feea4130f27ea563d3/src/main/java/com/ericbouchut/oop/inheritance/Monitorable.java)
+- [Configurable](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/b460b3f024b7acaba7e846feea4130f27ea563d3/src/main/java/com/ericbouchut/oop/inheritance/Configurable.java)
+- [java.lang.Runnable](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Runnable.html) which basically  defines a `run()` method
+    ```java
+    @FunctionalInterface  
+    public interface Runnable {  
+         void run();  
+    }
+    ```
+
+
 
 [public_same_class]:    https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/publicmod/AccessPublicFromClass.java
 [private_same_class]:   https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/privatemod/AccessPrivateFromClass.java
