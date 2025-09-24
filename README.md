@@ -325,8 +325,6 @@ The [MyApplication](https://github.com/ebouchut-laplateforme/java-fundamentals/b
     }
     ```
 
-
-
 [public_same_class]:    https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/publicmod/AccessPublicFromClass.java
 [private_same_class]:   https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/privatemod/AccessPrivateFromClass.java
 [protected_same_class]: https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/protectedmod/AccessProtectedFromClass.java
