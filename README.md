@@ -3,7 +3,8 @@
 ## Presentation
 
 This project contains hands-on exercises based on the great Udemy video course
-about [Java Fundamentals](https://www.udemy.com/course/java-fundamentals-beginners/) by Jean Claude Bazin's.
+about [Java Fundamentals](https://www.udemy.com/course/java-fundamentals-beginners/) by Jean-Claude Bazin.
+
 
 ## Documentation
 
