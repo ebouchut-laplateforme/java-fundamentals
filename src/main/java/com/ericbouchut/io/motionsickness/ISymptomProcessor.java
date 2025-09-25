@@ -1,7 +1,8 @@
 package com.ericbouchut.io.motionsickness;
 
 import java.io.BufferedReader;
+import java.util.Map;
 
 public interface ISymptomProcessor {
-    void process(BufferedReader reader) throws SymptomException;
+    Map<String, Integer> process(BufferedReader reader) throws SymptomException;
 }

@@ -8,7 +8,7 @@ package com.ericbouchut.io.motionsickness;
  */
 public interface ISymptomsCounter {
 
-    /*
+    /**
      * <ol>
      *  <li>
      *      Read a text file that contains an unordered list of symptoms (one per line).

@@ -7,19 +7,19 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class SymptomsCounter implements ISymptomReader, ISymptomProcessor, ISymptomWriter, ISymptomsCounter {
-    Map<String, Integer> symptom2Count = new TreeMap<>();
 
     /**
+     * {@inheritDoc}
      *
-     * @param inputFilename
+     * @param inputFilename the filename where to find the symptoms
      * @param outputFilename
-     * @throws SymptomException
+     * @throws SymptomException when something goes wrong while opening, reading or writing the files.
      */
     @Override
     public void count(String inputFilename, String outputFilename) throws SymptomException {
         BufferedReader reader = read(inputFilename);
-        process(reader);
-        write(outputFilename);
+        Map<String, Integer> symptom2Count = process(reader);
+        write(outputFilename, symptom2Count);
     }
 
     @Override
@@ -32,36 +32,49 @@ public class SymptomsCounter implements ISymptomReader, ISymptomProcessor, ISymp
         }
     }
 
+    /**
+     * Count the number of occurrences of each symptom read from the passed-in BufferedReader
+     * and return a <code>Map&lt;String, Integer&gt;</code>  where key is a <code>String</code> with the name of a symbol,
+     * and value is an <code>Integer</code> with the number of occurrences of this symbol found in the file.
+     * <u>
+     *  <li>dry mouth ==> 10</li>
+     *  <li>fever ==> 9</li>
+     *  <li>cough ==> 6</li>
+     *  <li>low blood pressure ==> 4</li>
+     * </u>
+     *
+     * @param reader the Reader where to read the unordered symptoms
+     * @return a Map of pairs (String: symptom name, Integer: number of occurrences of this symptom found via reader) ordered by symptom name.
+     */
     @Override
-    public void process(BufferedReader reader) throws SymptomException {
-        symptom2Count.clear();
+    public Map<String, Integer> process(BufferedReader reader) throws SymptomException {
 
         try {
+            Map<String, Integer> symptom2Count = new TreeMap<>();
             String symptom;
-            while (((symptom = reader.readLine()) != null)) {
-                // Remove leading and trailing spaces
-                symptom = symptom.trim();
-
-                if (!symptom.isEmpty()) {
-                    Integer count = this.symptom2Count.getOrDefault(symptom, 0);
-                    this.symptom2Count.put(symptom, ++count);
+            while ((symptom = reader.readLine()) != null) {
+                // Remove leading and trailing spaces from the symptom
+                if (!symptom.strip().isEmpty()) {
+                    Integer count = symptom2Count.getOrDefault(symptom, 0);
+                    symptom2Count.put(symptom, ++count);
                 }
             }
+            return symptom2Count;
         } catch (IOException e) {
             throw new SymptomException("Error while reading the symptoms.", e);
         }
     }
 
     @Override
-    public void write(String filename) throws SymptomException {
+    public void write(String filename, Map<String, Integer> symptom2Count) throws SymptomException {
         Writer writer = null;
         try {
             // Writer writer = new BufferedWriter( new FileWriter(filename)); // oldies but goldies...
-            writer = Files.newBufferedWriter(Path.of(filename)); // Shiny new way to do the same, using these helper class and method!
+            writer = Files.newBufferedWriter(Path.of(filename)); // Shiny new way to do the same
 
             // Iterate over the Map entries: (symptom, count (i.e., number of occurrences))
             for (Map.Entry<String, Integer> entry : symptom2Count.entrySet()) {
-                // Write a line for each symptom along with its number of occurrences like so:
+                // Write a line for each symptom along with its number of occurrences with the format:
                 // symptom = count
                 writer.write(String.format("%s = %d\n", entry.getKey(), entry.getValue()));
             }
