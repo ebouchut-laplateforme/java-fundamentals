@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class SymptomsCounter implements ISymptomReader, ISymptomProcessor, ISymptomWriter, ISymptomsCounter {
+public class FileSymptomCounter implements ISymptomReader, ISymptomProcessor, ISymptomWriter, ISymptomCounter {
 
     /**
      * {@inheritDoc}

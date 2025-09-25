@@ -6,7 +6,7 @@ package com.ericbouchut.io.motionsickness;
  * and generate a text file with an ordered list of unique (deduplicated) symptoms
  * and their respective number of occurrences.
  */
-public interface ISymptomsCounter {
+public interface ISymptomCounter {
 
     /**
      * <ol>

@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.TreeMap;
 
-public class StreamFileOccurrenceCounter implements ISymptomsCounter {
+public class StreamSymptomCounter implements ISymptomCounter {
+
     @Override
     public void count(String inputFilename, String outputFilename) throws SymptomException  {
         try (BufferedWriter writer = Files.newBufferedWriter(Path.of(outputFilename))) {
@@ -43,6 +44,5 @@ public class StreamFileOccurrenceCounter implements ISymptomsCounter {
         } catch (IOException e) {
             throw new SymptomException("Error while reading/processing/writing the file", e);
         }
-
     }
 }

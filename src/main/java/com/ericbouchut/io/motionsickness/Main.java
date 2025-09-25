@@ -19,7 +19,7 @@ public class Main {
                 outputFilename = "/tmp/results.txt";
             }
 
-            new SymptomsCounter().count(inputFilename, outputFilename);
+            new FileSymptomCounter().count(inputFilename, outputFilename);
         } catch (SymptomException | URISyntaxException e) {
             e.printStackTrace();
         }
