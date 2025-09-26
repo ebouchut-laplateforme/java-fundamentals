@@ -10,6 +10,9 @@ import java.util.TreeMap;
 
 public class StreamSymptomCounter implements ISymptomCounter {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void count(String inputFilename, String outputFilename) throws SymptomException  {
         try (BufferedWriter writer = Files.newBufferedWriter(Path.of(outputFilename))) {

@@ -1,4 +1,4 @@
-# Java Fundamentals Exercices
+# Java Fundamentals Exercises
 
 ## Presentation
 
