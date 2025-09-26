@@ -2,6 +2,7 @@ package com.ericbouchut.io.motionsickness;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
@@ -44,10 +45,14 @@ public class StreamSymptomCounter implements ISymptomCounter {
                             writer.write(symptom + " = " + count);
                             writer.newLine();
                         } catch (IOException e) {
-                            // TODO: Why do I need to cach IOException here in this lambda even though it is catched below?
+                            // I need to catch IOException from **within** this lambda passed-in to
+                            // forEach is a BiConsumer whose accept method declaration does not throw any Exception.
+                            // I choose to keep the stream flow instead of switching back to a regular loop
+                            // and raise the IOException wrapped in an unchecked exception.
+                            throw new UncheckedIOException("Error while writing the file", e);
                         }
                     });
-        } catch (IOException e) {
+        } catch (IOException | UncheckedIOException e) {
             throw new SymptomException("Error while reading/processing/writing the file", e);
         }
     }
