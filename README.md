@@ -29,7 +29,7 @@ An **access modifier** defines the visibility of the class, field/attribute, or 
 | package-private | ✅ [example][package_same_class]   | ✅ [example][package_other_class_same_package]   | ❌ [example][package_class_other_package]   | ✅ [example][package_subclass_same_package]   | ❌ [example][package_subclass_other_package]   |
 
 Let's break down these access modifiers with visual class diagrams.
-The diagram use colors define who can access:
+The diagram use colors that define who can access:
 
 - 🟩 <span style="color: #76B192;">green</span>: can access
 - 🟥 <span style="color: #D74345;">red</span>: **CANNOT** access
@@ -184,6 +184,8 @@ Source: [#55: Access levels](https://www.udemy.com/course/java-fundamentals-begi
 > - ...
 >
 
+Here is an example of a class diagram showing the Mermaid source code first, and then the rendering.
+
 Source:    
 
 ````
@@ -325,6 +327,38 @@ The [MyApplication](https://github.com/ebouchut-laplateforme/java-fundamentals/b
          void run();  
     }
     ```
+
+```mermaid
+classDiagram
+  class Monitorable  {
+    <<interface>>
+
+    +isRunning() boolean
+    +getMetrics() Map~String, Object~
+  }
+  class Configurable {
+    <<interface>>
+
+    +loadConfig()
+    +saveConfig()
+  }
+  class Runnable["java.lang.Runnable"] {
+    <<interface>>
+
+    +run()
+  }
+  class MyApplication {
+    +isRunning() boolean
+    +getMetrics() Map~String, Object~
+    +loadConfig()
+    +saveConfig()
+    +run()
+  }
+
+   Monitorable  <|-- MyApplication: implements
+   Configurable <|-- MyApplication: implements
+   Runnable     <|-- MyApplication: implements
+```
 
 ### Input Output
 
