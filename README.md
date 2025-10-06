@@ -326,6 +326,73 @@ The [MyApplication](https://github.com/ebouchut-laplateforme/java-fundamentals/b
     }
     ```
 
+### Input Output
+
+#### Motion Sickness Lab
+
+The **Motion Sickness** lab is intended as a practice on how to **read and write text files**.
+
+#### Exercise Statement
+
+See [Udemy course](https://www.udemy.com/course/java-fundamentals-beginners/learn/lecture/46090645#overview) for details.
+
+Read a text file ([`symptoms.txt`](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/resources/symptoms.txt))  that contains an **unordered list of symptoms**.  
+There is one symptom per line.    
+A symptom can contain **spaces**.  
+The file can contain **duplicate** symptoms.
+
+- **Read** the input file
+- **Process** the input file (but <b>do not modify</b> it), so that you:
+  - Order alphabetically the symptoms (i.e., the lines),
+  - Remove duplicate symptoms.
+  - Count the occurrences of each distinct symptom,
+- **Create** a new text file (`results.txt`)
+    - With an ordered list of unique symptoms (one per line),
+    - With duplicates removed,
+    - Using this format: `symptom = occurrences`.
+      For instance if you found 11 occurrences of `high blood pressure` in the input file (`symptoms.txt`), you will write once:
+      ```txt
+      high blood pressure = 11
+      ```
+
+Here is what the output file (`results.txt`) should look like:
+
+```txt
+anxiety = 7
+arrhythmias = 4
+blindness = 2
+blurred vision = 6
+constricted pupils = 3
+cough = 7
+dialated pupils = 4
+dizziness = 6
+dry mouth = 10
+fever = 9
+headache = 4
+high blood pressure = 11
+inflamation = 9
+insomnia = 4
+low blood pressure = 4
+nausea = 7
+rapid heart rate = 1
+rash = 6
+shortness of breath = 4
+stiff neck = 6
+stomach pain = 5
+tremor = 4
+water retention = 1
+```
+
+#### Code
+
+You can find the [code here](https://github.com/ebouchut-laplateforme/java-fundamentals/tree/main/src/main/java/com/ericbouchut/io/motionsickness).
+I provided 2 versions, one using the regular file reader and writer API, 
+the other using the Stream API to learn and practice the functional concepts that have been introduced from Java 1.8 onwards. 
+
+- Java **File** API: [FileSymptomCounter](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/io/motionsickness/FileSymptomCounter.java)
+- Java **Stream** API: [StreamSymptomCounter](https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/io/motionsickness/StreamSymptomCounter.java)
+
+
 [public_same_class]:    https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/publicmod/AccessPublicFromClass.java
 [private_same_class]:   https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/privatemod/AccessPrivateFromClass.java
 [protected_same_class]: https://github.com/ebouchut-laplateforme/java-fundamentals/blob/main/src/main/java/com/ericbouchut/oop/accessmodifiers/protectedmod/AccessProtectedFromClass.java
