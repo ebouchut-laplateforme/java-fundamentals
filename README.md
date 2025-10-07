@@ -48,6 +48,8 @@ classDiagram
         }
         class Subclass["Subclass same package"]:::can_access {
         }
+        class OtherClassSamePackage["Other class same package"]:::can_access {
+        }
     }
     note for Class "attribute and method have **public** access"
     Class <|-- Subclass
@@ -81,6 +83,8 @@ classDiagram
         }
         class Subclass["Subclass same package"]:::cannot_access {
         }
+        class OtherClassSamePackage["Other class same package"]:::cannot_access {
+        }
     }
     note for Class "attribute and method have **private** access"
     Class <|-- Subclass
@@ -89,7 +93,6 @@ classDiagram
         class SubclassOtherPackage["Subclass different package"]:::cannot_access {
         }
         class ClassOtherPackage["Other class different package"]:::cannot_access {
-            
         }
     }
     Class <|-- SubclassOtherPackage
@@ -114,6 +117,8 @@ classDiagram
             #method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
+        }
+        class OtherClassSamePackage["Other class same package"]:::can_access {
         }
     }
     note for Class "attribute and method have **protected** access"
@@ -149,6 +154,8 @@ classDiagram
         }
         class Subclass["Subclass same package"]:::can_access {
         }
+        class OtherClassSamePackage["Other class same package"]:::can_access {
+        }
     }
     note for Class "attribute and method have **package-private** (default) access"
     Class <|-- Subclass
@@ -157,7 +164,6 @@ classDiagram
         class SubclassOtherPackage["Subclass different package"]:::cannot_access {
         }
         class ClassOtherPackage["Other class different package"]:::cannot_access {
-            
         }
     }
     Class <|-- SubclassOtherPackage
