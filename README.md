@@ -42,13 +42,13 @@ classDiagram
     direction TB
     
     namespace SamePackage {
+        class OtherClassSamePackage["Other class same package"]:::can_access {
+        }
         class Class:::can_access {
             +attribute String
             +method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
-        }
-        class OtherClassSamePackage["Other class same package"]:::can_access {
         }
     }
     note for Class "attribute and method have **public** access"
@@ -77,13 +77,13 @@ classDiagram
     direction TB
     
     namespace SamePackage {
+        class OtherClassSamePackage["Other class same package"]:::cannot_access {
+        }
         class Class:::can_access {
             -attribute String
             -method()  void
         }
         class Subclass["Subclass same package"]:::cannot_access {
-        }
-        class OtherClassSamePackage["Other class same package"]:::cannot_access {
         }
     }
     note for Class "attribute and method have **private** access"
@@ -112,13 +112,13 @@ classDiagram
     direction TB
     
     namespace SamePackage {
+        class OtherClassSamePackage["Other class same package"]:::can_access {
+        }
         class Class:::can_access {
             #attribute String
             #method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
-        }
-        class OtherClassSamePackage["Other class same package"]:::can_access {
         }
     }
     note for Class "attribute and method have **protected** access"
@@ -148,13 +148,13 @@ classDiagram
     direction TB
     
     namespace SamePackage {
+        class OtherClassSamePackage["Other class same package"]:::can_access {
+        }
         class Class:::can_access {
             ~attribute String
             ~method()  void
         }
         class Subclass["Subclass same package"]:::can_access {
-        }
-        class OtherClassSamePackage["Other class same package"]:::can_access {
         }
     }
     note for Class "attribute and method have **package-private** (default) access"
