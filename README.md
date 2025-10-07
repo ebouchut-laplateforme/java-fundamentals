@@ -64,7 +64,9 @@ classDiagram
     Class <|-- SubclassOtherPackage
     
     
-    classDef can_access fill:#76b192
+    classDef can_access   fill:#76b192
+    style    SamePackage  fill:#3B82F620,stroke:#3B82F6,stroke-width:4px
+    style    OtherPackage fill:#F59E0B20,stroke:#F59E0B,stroke-width:4px
 ```
 
 ---
@@ -100,6 +102,8 @@ classDiagram
     
     classDef can_access    fill:#76B192
     classDef cannot_access fill:#D74345
+    style    SamePackage   fill:none,stroke:#3B82F6,stroke-width:4px
+    style    OtherPackage  fill:none,stroke:#F59E0B,stroke-width:4px
 ```
 
 ---
@@ -136,6 +140,9 @@ classDiagram
     
     classDef can_access    fill:#76B192
     classDef cannot_access fill:#D74345
+    style    SamePackage   fill:none,stroke:#3B82F6,stroke-width:4px
+    style    OtherPackage  fill:none,stroke:#F59E0B,stroke-width:4px
+
 ```
 
 ---
@@ -171,6 +178,9 @@ classDiagram
     
     classDef can_access    fill:#76B192
     classDef cannot_access fill:#D74345
+
+    style    SamePackage   fill:none,stroke:#3B82F6,stroke-width:4px
+    style   OtherPackage   fill:none,stroke:#F59E0B,stroke-width:4px
 ```
 
 Source: [#55: Access levels](https://www.udemy.com/course/java-fundamentals-beginners/learn/lecture/46066801#overview)
