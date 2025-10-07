@@ -39,7 +39,7 @@ public class StreamSymptomCounter implements ISymptomCounter {
                     //
                     // - Step 2: Collectors.groupingBy(symptom -> symptom, TreeMap::new; ...) // Create a TreeMap to store pairs(Key = symptom => Value = List of all occurrences of this symptom).
                     //     Using a TreeMap ensures that the keys are unique (i.e. there are no duplicates).
-                    //     TreeMap<String, List<String>>: {"headache" = ["fever" = ["fever", "fever"], "headache", "headache", "headache"], "nausea": ["nausea"]}
+                    //     TreeMap<String, List<String>>: {"fever" = ["fever", "fever"], "headache" = ["headache", "headache", "headache"], "nausea": ["nausea"]}
                     //
                     // - Step 3: Collectors.groupingBy(symptom -> symptom, TreeMap::new; Collectors.counting())
                     //     Store the symptom count (Long) as the TreeMap value.
