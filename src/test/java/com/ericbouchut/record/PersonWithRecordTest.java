@@ -13,13 +13,14 @@ class PersonWithRecordTest {
 
     @Test
     void recordGeneratesConstructorWithAllArgumentsTest() {
-        assertInstanceOf(PersonWithRecord.class, new PersonWithRecord("Aleijandro", 22));
+        assertInstanceOf(PersonWithRecord.class,
+                new PersonWithRecord("Aleijandro", 22, "alej@example.com"));
     }
 
     @Test
     void recordGeneratesToStringTest() {
-        PersonWithRecord person = new PersonWithRecord("Aleijandro", 22);
-        assertEquals("PersonWithRecord[name=Aleijandro, age=22]", person.toString());
+        PersonWithRecord person = new PersonWithRecord("Aleijandro", 22, "alej@example.com");
+        assertEquals("PersonWithRecord[name=Aleijandro, age=22, email=alej@example.com]", person.toString());
     }
 
     /**
@@ -28,9 +29,18 @@ class PersonWithRecordTest {
      */
     @Test
     void recordAccessorsDoNotStartWithGetTest() {
-        PersonWithRecord person = new PersonWithRecord("Aleijandro", 22);
+        PersonWithRecord person = new PersonWithRecord("Aleijandro", 22, "alej@example.com");
 
         assertEquals("Aleijandro", person.name(), "name() is not a Javabeans accessor meaning it is not prefixed with get");
         assertEquals(22, person.age());
+        assertEquals("alej@example.com", person.email());
+    }
+
+    @Test
+    void constructorFailsWhenEmailInvalidTest() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new PersonWithRecord("Josh", 64, "INVALID_EMAIL");
+        });
     }
 }
