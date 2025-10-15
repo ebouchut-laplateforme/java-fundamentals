@@ -1,0 +1,36 @@
+package com.ericbouchut.record;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Test a class defined with the <code>record</code> keyword
+ *
+ * @see PersonWithRecord
+ */
+class PersonWithRecordTest {
+
+    @Test
+    void recordGeneratesConstructorWithAllArgumentsTest() {
+        assertInstanceOf(PersonWithRecord.class, new PersonWithRecord("Aleijandro", 22));
+    }
+
+    @Test
+    void recordGeneratesToStringTest() {
+        PersonWithRecord person = new PersonWithRecord("Aleijandro", 22);
+        assertEquals("PersonWithRecord[name=Aleijandro, age=22]", person.toString());
+    }
+
+    /**
+     * Generated accessors methods are not Javabeans accessors,
+     *  meaning they do not start with a <code>get</code> prefix.
+     */
+    @Test
+    void recordAccessorsDoNotStartWithGetTest() {
+        PersonWithRecord person = new PersonWithRecord("Aleijandro", 22);
+
+        assertEquals("Aleijandro", person.name(), "name() is not a Javabeans accessor meaning it is not prefixed with get");
+        assertEquals(22, person.age());
+    }
+}
