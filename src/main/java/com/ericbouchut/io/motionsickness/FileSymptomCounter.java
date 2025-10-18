@@ -67,11 +67,9 @@ public class FileSymptomCounter implements ISymptomReader, ISymptomProcessor, IS
 
     @Override
     public void write(String filename, Map<String, Integer> symptom2Count) throws SymptomException {
-        Writer writer = null;
-        try {
-            // Writer writer = new BufferedWriter( new FileWriter(filename)); // oldies but goldies...
-            writer = Files.newBufferedWriter(Path.of(filename)); // Shiny new way to do the same
-
+        // Using try-with-resources below ensures writer is closed
+        // whether or not an exception occurred inside the try block.
+        try (Writer writer = Files.newBufferedWriter(Path.of(filename))) {
             // Iterate over the Map entries: (symptom, count (i.e., number of occurrences))
             for (Map.Entry<String, Integer> entry : symptom2Count.entrySet()) {
                 // Write a line for each symptom along with its number of occurrences with the format:
@@ -80,14 +78,6 @@ public class FileSymptomCounter implements ISymptomReader, ISymptomProcessor, IS
             }
         } catch (IOException e) {
             throw new SymptomException(String.format("Cannot write to file %s", filename), e);
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException ignored) {
-                    // Do nothing
-                }
-            }
         }
     }
 }
