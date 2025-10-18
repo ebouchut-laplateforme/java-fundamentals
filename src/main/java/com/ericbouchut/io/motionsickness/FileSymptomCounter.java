@@ -76,7 +76,7 @@ public class FileSymptomCounter implements ISymptomReader, ISymptomProcessor, IS
             for (Map.Entry<String, Integer> entry : symptom2Count.entrySet()) {
                 // Write a line for each symptom along with its number of occurrences with the format:
                 // symptom = count
-                writer.write(String.format("%s = %d\n", entry.getKey(), entry.getValue()));
+                writer.write(String.format("%s = %d%n", entry.getKey(), entry.getValue()));
             }
         } catch (IOException e) {
             throw new SymptomException(String.format("Cannot write to file %s", filename), e);
